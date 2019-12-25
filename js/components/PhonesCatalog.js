@@ -21,7 +21,7 @@ export default class PhonesCatalog {
   render() {
     this.element.innerHTML = `
       <ul class="phones">
-        ${ this.props.phones.map(phone => `
+        ${this.props.phones.map(phone => `
 
           <li class="thumbnail">
             <a
@@ -50,7 +50,7 @@ export default class PhonesCatalog {
             <p>${phone.snippet}</p>
           </li>
           
-        `).join('') } 
+        `).join('')} 
       </ul>
     `;
   }

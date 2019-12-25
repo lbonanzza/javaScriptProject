@@ -22,11 +22,11 @@ export default class PhoneViewer {
   }
 
   render() {
-    const { phone } = this.props;
+    const {phone} = this.props;
 
     this.element.innerHTML = `
       <div>
-        <img class="phone" src="${ this.state.currentPicture }">
+        <img class="phone" src="${this.state.currentPicture}">
     
         <button data-element="back-button">Back</button>
         <button>Add to basket</button>

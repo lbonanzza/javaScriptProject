@@ -1,6 +1,6 @@
 import PhonesCatalog from './PhonesCatalog.js';
 import PhoneViewer from './PhoneViewer.js';
-import { getAll, getById } from '../api/phone.js';
+import {getAll, getById} from '../api/phone.js';
 
 export default class PhonesPage {
   constructor(element) {
@@ -57,11 +57,11 @@ export default class PhonesPage {
     
         <!--Main content-->
         <div class="col-md-10">
-          ${ this.state.selectedPhone ? `
+          ${this.state.selectedPhone ? `
             <PhoneViewer></PhoneViewer>
           ` : `
             <PhonesCatalog></PhonesCatalog>
-          ` }
+          `}
         </div>
       </div>
     `;
