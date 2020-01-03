@@ -9,6 +9,7 @@ export default class PhoneViewer {
 
     this.render();
 
+    // Back button
     this.element.addEventListener('click', (event) => {
       const delegateTarget =
         event.target.closest('[data-element="back-button"]');
@@ -19,14 +20,34 @@ export default class PhoneViewer {
 
       this.props.onBack();
     });
+
+
+    // Biggest current picture
+    this.element.addEventListener('click', (event) => {
+      const delegateTarget =
+        event.target.closest('[data-element="thumbnail"]');
+
+      if (!delegateTarget) {
+        return;
+      }
+
+      this.state = {
+        ...this.state,
+        currentPicture: delegateTarget.src,
+      };
+
+      this.render();
+    });
+
   }
 
   render() {
     const {phone} = this.props;
+    const {currentPicture} = this.state;
 
     this.element.innerHTML = `
       <div>
-        <img class="phone" src="${this.state.currentPicture}">
+        <img class="phone" src="${currentPicture}">
     
         <button data-element="back-button">Back</button>
         <button>Add to basket</button>
@@ -38,7 +59,7 @@ export default class PhoneViewer {
         
           ${phone.images.map(imageUrl => `
             <li>
-              <img src="${imageUrl}">
+              <img src="${imageUrl}" data-element="thumbnail">
             </li>
           `).join('')}
         </ul>
