@@ -2,6 +2,7 @@ import Component from "../Component.js";
 import PhonesCatalog from './PhonesCatalog.js';
 import PhoneViewer from './PhoneViewer.js';
 import {getAll, getById} from '../api/phone.js';
+import Basket from "./Basket.js";
 
 export default class PhonesPage extends Component{
   constructor(element) {
@@ -11,7 +12,7 @@ export default class PhonesPage extends Component{
     this.state = {
       phones: getAll(),
       selectedPhone: null,
-      basketItems: [],
+      basketItems: ["Samsung", "Apple"],
     };
 
     this.render();
@@ -47,14 +48,7 @@ export default class PhonesPage extends Component{
             </p>
           </section>
     
-          <section>
-            <p>Shopping Cart</p>
-            <ul>
-              <li>Phone 1 <button>x</button></li>
-              <li>Phone 2 <button>x</button></li>
-              <li>Phone 3 <button>x</button></li>
-            </ul>
-          </section>
+          <Basket></Basket>
         </div>
     
         <!--Main content-->
@@ -84,6 +78,11 @@ export default class PhonesPage extends Component{
         this.state.selectedPhone = null;
         this.render();
       }
+    });
+
+    this.initComponent(Basket, {
+      items: this.state.basketItems,
+
     });
   }
 }
