@@ -1,6 +1,6 @@
 import Component from "../Component.js";
 
-export default class PhonesCatalog extends Component{
+export default class PhonesCatalog extends Component {
   constructor(element, props) {
     super(element, props);
 
@@ -9,6 +9,11 @@ export default class PhonesCatalog extends Component{
     // Phone select
     this.on('click', `phone-link`, (event) => {
       this.props.onPhoneSelected(event.delegateTarget.dataset.phoneId);
+    });
+
+    // Add button
+    this.on('click', `add-button`, (event) => {
+      this.props.onAdd(event.delegateTarget.dataset.phoneId);
     });
   }
 
@@ -28,7 +33,10 @@ export default class PhonesCatalog extends Component{
             </a>
   
             <div class="phones__btn-buy-wrapper">
-              <a class="btn btn-success">
+              <a 
+                  data-element="add-button" 
+                  data-phone-id="${phone.id}" 
+                  class="btn btn-success">
                 Add
               </a>
             </div>

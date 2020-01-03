@@ -4,7 +4,7 @@ import PhoneViewer from './PhoneViewer.js';
 import {getAll, getById} from '../api/phone.js';
 import Basket from "./Basket.js";
 
-export default class PhonesPage extends Component{
+export default class PhonesPage extends Component {
   constructor(element) {
     super(element);
     this.element = element;
@@ -69,6 +69,17 @@ export default class PhonesPage extends Component{
         this.state.selectedPhone = getById(phoneId);
         this.render();
       },
+
+      onAdd: (phoneId) => {
+        this.state = {
+          ...this.state,
+          basketItems: [
+            ...this.state.basketItems,
+            phoneId
+          ],
+        };
+        this.render();
+      }
     });
 
     this.initComponent(PhoneViewer, {
