@@ -15,6 +15,25 @@ export default class PhonesPage extends Component {
       basketItems: ["Samsung", "Apple"],
     };
 
+    this.addBasketItem = (phoneId) => {
+      this.setState({
+        basketItems: [
+          ...this.state.basketItems,
+          phoneId
+        ],
+      });
+    };
+    this.showPhone = (phoneId) => {
+      this.setState({
+        selectedPhone: getById(phoneId)
+      })
+    };
+    this.hidePhone = () => {
+      this.setState({
+        selectedPhone: null,
+      });
+    };
+
     this.render();
   }
 
@@ -64,36 +83,18 @@ export default class PhonesPage extends Component {
 
     this.initComponent(PhonesCatalog, {
       phones: this.state.phones,
-
-      onPhoneSelected: (phoneId) => {
-        this.state.selectedPhone = getById(phoneId);
-        this.render();
-      },
-
-      onAdd: (phoneId) => {
-        this.state = {
-          ...this.state,
-          basketItems: [
-            ...this.state.basketItems,
-            phoneId
-          ],
-        };
-        this.render();
-      }
+      onPhoneSelected: this.showPhone,
+      onAdd: this.addBasketItem
     });
 
     this.initComponent(PhoneViewer, {
       phone: this.state.selectedPhone,
-
-      onBack: () => {
-        this.state.selectedPhone = null;
-        this.render();
-      }
+      onBack: this.hidePhone,
+      onAdd: this.addBasketItem
     });
 
     this.initComponent(Basket, {
       items: this.state.basketItems,
-
     });
   }
 }

@@ -17,12 +17,15 @@ export default class PhoneViewer extends Component{
 
     // Biggest current picture
     this.on('click', 'thumbnail', (event) => {
-      this.state = {
-        ...this.state,
+      this.setState({
         currentPicture: event.delegateTarget.src,
-      };
+      });
+    });
 
-      this.render();
+
+    // Add button
+    this.on('click', `add-button`, () => {
+      this.props.onAdd(this.props.phone.id);
     });
   }
 
@@ -36,7 +39,7 @@ export default class PhoneViewer extends Component{
         <img class="phone" src="${currentPicture}">
     
         <button data-element="back-button">Back</button>
-        <button>Add to basket</button>
+        <button data-element="add-button">Add to basket</button>
     
         <h1>${phone.name}</h1>
         <p>${phone.description}</p>

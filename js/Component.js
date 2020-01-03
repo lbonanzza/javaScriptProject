@@ -5,6 +5,14 @@ export default class Component {
     this.props = props;
   }
 
+  setState(data) {
+    this.state = {
+      ...this.state,
+      ...data,
+    };
+    this.render();
+  }
+
   on(eventName, elementName, callback) {
     this.element.addEventListener(eventName, (event) => {
       const delegateTarget =
@@ -18,4 +26,6 @@ export default class Component {
       callback(event);
     });
   }
+
+
 }
