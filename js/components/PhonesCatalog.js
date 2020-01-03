@@ -1,5 +1,3 @@
-'use strict';
-
 export default class PhonesCatalog {
   constructor(element, props) {
     this.element = element;

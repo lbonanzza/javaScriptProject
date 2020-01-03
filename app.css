@@ -26,6 +26,14 @@ body {
   width: 100px;
 }
 
+.thumbnail {
+  border-radius: 10px;
+}
+
+.button, input, select, textarea {
+  border-radius: 10px;
+}
+
 .phones__btn-buy-wrapper {
   align-items: center;
   float: right;
@@ -50,6 +58,7 @@ img.phone {
   height: 400px;
   width: 400px;
   display: none;
+  border-radius: 10px;
 }
 
 img.phone:first-child {
@@ -67,6 +76,7 @@ ul.phone-thumbs li {
   display: inline-block;
   margin: 1em;
   background-color: white;
+  border-radius: 10px;
 }
 
 ul.phone-thumbs img {
@@ -77,6 +87,14 @@ ul.phone-thumbs img {
 
 ul.phone-thumbs img:hover {
   cursor: pointer;
+}
+
+.add {
+  border-radius: 10px;
+}
+
+.back {
+  border-radius: 10px;
 }
 
 
