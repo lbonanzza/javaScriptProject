@@ -33,6 +33,16 @@ export default class PhonesPage extends Component {
         selectedPhone: null,
       });
     };
+    this.deleteBasketItem = (index) => {
+      const items = this.state.basketItems;
+
+      this.setState({
+        basketItems: [
+          ...items.slice(0, index),
+          ...items.slice(index + 1)
+        ],
+      });
+    };
 
     this.render();
   }
@@ -85,6 +95,7 @@ export default class PhonesPage extends Component {
 
     this.initComponent(Basket, {
       items: this.state.basketItems,
+      onDelete: this.deleteBasketItem,
     });
   }
 }
