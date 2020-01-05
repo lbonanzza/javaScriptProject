@@ -10,7 +10,7 @@ export default class PhonesPage extends Component {
     this.element = element;
 
     this.state = {
-      phones: getAll(),
+      phones: [],
       selectedPhone: null,
       basketItems: ["Samsung", "Apple"],
     };
@@ -45,6 +45,13 @@ export default class PhonesPage extends Component {
     };
 
     this.render();
+
+    getAll()
+      .then(phones => {
+        this.setState({
+          phones: phones
+        });
+      });
   }
 
   render() {
