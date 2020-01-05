@@ -23,16 +23,6 @@ export default class PhonesPage extends Component {
         ],
       });
     };
-    this.showPhone = (phoneId) => {
-      this.setState({
-        selectedPhone: getById(phoneId)
-      })
-    };
-    this.hidePhone = () => {
-      this.setState({
-        selectedPhone: null,
-      });
-    };
     this.deleteBasketItem = (index) => {
       const items = this.state.basketItems;
 
@@ -41,6 +31,21 @@ export default class PhonesPage extends Component {
           ...items.slice(0, index),
           ...items.slice(index + 1)
         ],
+      });
+    };
+
+    this.showPhone = (phoneId) => {
+      getById(phoneId)
+        .then(phoneDetails => {
+        this.setState({
+          selectedPhone: phoneDetails
+        });
+      });
+    };
+
+    this.hidePhone = () => {
+      this.setState({
+        selectedPhone: null,
       });
     };
 

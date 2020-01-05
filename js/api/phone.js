@@ -1,8 +1,6 @@
 export const getById = (phoneId) => {
-  fetch(`https://mgrinko.github.io/js-20190426/api/phones/${phoneId}.json`)
-    .then((data) => {
-      console.log(data);
-    });
+  return fetch(`https://mgrinko.github.io/js-20190426/api/phones/${phoneId}.json`)
+    .then((response) => response.json());
 };
 
 export const getAll = () => {
