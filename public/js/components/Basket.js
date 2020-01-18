@@ -18,8 +18,10 @@ export default class Basket extends Component{
 
     this.element.innerHTML = `
       <section>
-        <p>Shopping Cart</p>
-        <ul>
+        <h4>Shopping Cart</h4>
+        
+        ${items.length > 0 ? `
+          <ul>
           ${items.map((item, index) => `
             <li>
               ${item} 
@@ -27,7 +29,10 @@ export default class Basket extends Component{
               data-item-index="${index}">x</button>
             </li>
           `).join('')}
-        </ul>
+        </ul>` 
+        : 
+        `<p>no items yet</p>`}
+        
       </section>
     `;
   }
