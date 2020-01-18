@@ -20,7 +20,7 @@ export default class PhonesPage extends Component {
       selectedPhone: null,
       basketItems: initialItem,
       query: '',
-      sortField: '',
+      sortField: 'name',
     };
 
     this.addBasketItem = (phoneId) => {
@@ -71,9 +71,7 @@ export default class PhonesPage extends Component {
     };
 
     this.render();
-
     this.loadPhones();
-
   }
 
   loadPhones() {

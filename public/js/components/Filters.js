@@ -10,6 +10,10 @@ export default class Filters extends Component{
     this.on('change', 'query-field', (event) => {
       props.onQueryChange(event.target.value)
     });
+
+    this.on('change', 'sort-field', (event) => {
+      props.onSortField(event.target.value)
+    });
   }
 
   render() {
@@ -25,9 +29,17 @@ export default class Filters extends Component{
     
             <p>
               Sort by:
-              <select>
-                <option value="name">Alphabetical</option>
-                <option value="age">Newest</option>
+              <select
+                 data-element="sort-field"
+              >
+                <option 
+                  value="name" 
+                  ${this.props.sortField === 'name' ? 'selected' : ''}
+                  >Alphabetical</option>
+                <option 
+                  value="age"
+                  ${this.props.sortField === 'age' ? 'selected' : ''}
+                  >Newest</option>
               </select>
             </p>
           </section>
