@@ -3,6 +3,8 @@ import PhonesCatalog from './PhonesCatalog.js';
 import PhoneViewer from './PhoneViewer.js';
 import {getAll, getById} from '../api/phone.js';
 import Basket from "./Basket.js";
+import Filters from "./Filters.js";
+
 
 export default class PhonesPage extends Component {
   constructor(element) {
@@ -60,15 +62,21 @@ export default class PhonesPage extends Component {
     };
 
     this.setQuery = (query) => {
-      this.setState({query})
+      this.setState({query});
+      this.loadPhones()
     };
 
-    this.sortField = (sortField) => {
+    this.setSortField = (sortField) => {
       this.setState({sortField})
     };
 
     this.render();
 
+    this.loadPhones();
+
+  }
+
+  loadPhones() {
     getAll({
       query: this.state.query,
       sortField: this.state.sortField,
@@ -117,6 +125,14 @@ export default class PhonesPage extends Component {
     this.initComponent(Basket, {
       items: this.state.basketItems,
       onDelete: this.deleteBasketItem,
+    });
+
+    this.initComponent(Filters, {
+      query: this.state.query,
+      sortField: this.state.sortField,
+
+      onQueryChange: this.setQuery,
+      onSortField: this.setSortField,
     });
   }
 }
