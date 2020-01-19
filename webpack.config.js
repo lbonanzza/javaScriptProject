@@ -1,7 +1,9 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-console.log('NODE_ENV-------'. process.env.NODE_ENV);
+
+console.log('NODE_ENV-------', process.env.NODE_ENV);
 const isProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
@@ -9,7 +11,7 @@ module.exports = {
   entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   devtool: isProduction ? false : 'source-map',
@@ -24,16 +26,15 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
 
+  // plugins: [new HtmlWebpackPlugin({
+  //   template: "./src/index.html"
+  // })],
+
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader',
-            options: { url: false } // tell css-loader to not package images referenced in css. perhaps re-activate this for base64 injection
-          },
-        ] // use
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.js$/,
@@ -47,6 +48,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
 };
 
