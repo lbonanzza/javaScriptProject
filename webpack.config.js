@@ -1,6 +1,9 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
+console.log('NODE_ENV-------'. process.env.NODE_ENV);
+const isProduction = process.env.NODE_ENV === "production";
+
 module.exports = {
   mode: 'none',
   entry: './src/app.js',
@@ -9,7 +12,7 @@ module.exports = {
     filename: 'bundle.js'
   },
 
-  devtool: false,
+  devtool: isProduction ? false : 'source-map',
   //watch: true,
 
   devServer: {
@@ -17,7 +20,7 @@ module.exports = {
   },
 
   optimization: {
-    minimize: true,
+    minimize: isProduction,
     minimizer: [new TerserPlugin()],
   },
 
