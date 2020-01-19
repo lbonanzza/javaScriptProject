@@ -18,6 +18,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader',
+            options: { url: false } // tell css-loader to not package images referenced in css. perhaps re-activate this for base64 injection
+          },
+        ] // use
+      },
+      {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
