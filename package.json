@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "client": "http-server ./public\n",
+    "build": "webpack --watch",
+    "start": "webpack-dev-server --open",
     "server": "node server.js"
   },
   "repository": {
@@ -29,6 +29,7 @@
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/runtime": "^7.8.3",
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "webpack-dev-server": "^3.10.1"
   }
 }
