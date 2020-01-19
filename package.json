@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "./node_modules/.bin/webpack",
     "client": "http-server ./public\n",
     "server": "node server.js"
   },
@@ -19,6 +20,8 @@
   "homepage": "https://lbonanzza.github.io/javaScriptProject/",
   "dependencies": {
     "http-server": "^0.12.1",
-    "node-static": "^0.7.11"
+    "node-static": "^0.7.11",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
